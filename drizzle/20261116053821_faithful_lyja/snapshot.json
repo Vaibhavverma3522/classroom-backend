@@ -1,0 +1,169 @@
+{
+  "type": "diff",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "4258c916-eae0-491f-84a1-fa559bab145a",
+  "prevIds": [
+    "07f3de7c-4e27-4c53-b43e-d32e27bd1dec"
+  ],
+  "footprints": [
+    {
+      "statementType": "drop_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "subjects"
+      ],
+      "writes": [
+        "s|fk|public.subjects.subjects_id_departments_id_fkey",
+        "n|fk|public.subjects.subjects_id_departments_id_fkey",
+        "e|fk|public.subjects.subjects_id_departments_id_fkey",
+        "n|con|public.subjects.subjects_id_departments_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.subjects",
+        "n|sch|public",
+        "e|col|public.subjects.id"
+      ]
+    },
+    {
+      "statementType": "alter_pk",
+      "statementTarget": [
+        "table",
+        "public",
+        "subjects"
+      ],
+      "writes": [
+        "s|pk|public.subjects"
+      ],
+      "reads": [
+        "n|tbl|public.subjects",
+        "n|sch|public",
+        "n|col|public.subjects.id"
+      ],
+      "sharedWrites": [
+        "e|uniqueness|public.subjects.department_id"
+      ],
+      "sqlHash": "769b8a6bdd2ffb21"
+    },
+    {
+      "statementType": "alter_column",
+      "statementTarget": [
+        "column",
+        "public",
+        "subjects",
+        "department_id"
+      ],
+      "writes": [
+        "s|colprop|public.subjects.department_id.identity",
+        "s|colprop|public.subjects.department_id.default",
+        "s|colprop|public.subjects.department_id.notNull"
+      ],
+      "reads": [
+        "n|tbl|public.subjects",
+        "n|sch|public",
+        "n|col|public.subjects.department_id"
+      ]
+    },
+    {
+      "statementType": "alter_column",
+      "statementTarget": [
+        "column",
+        "public",
+        "subjects",
+        "id"
+      ],
+      "writes": [
+        "s|colprop|public.subjects.id.identity",
+        "s|colprop|public.subjects.id.default",
+        "s|colprop|public.subjects.id.notNull"
+      ],
+      "reads": [
+        "n|tbl|public.subjects",
+        "n|sch|public",
+        "n|col|public.subjects.id"
+      ]
+    },
+    {
+      "statementType": "create_fk",
+      "statementTarget": [
+        "table",
+        "public",
+        "subjects"
+      ],
+      "writes": [
+        "s|fk|public.subjects.subjects_department_id_departments_id_fkey",
+        "n|fk|public.subjects.subjects_department_id_departments_id_fkey",
+        "e|fk|public.subjects.subjects_department_id_departments_id_fkey",
+        "n|con|public.subjects.subjects_department_id_departments_id_fkey"
+      ],
+      "reads": [
+        "n|tbl|public.subjects",
+        "n|sch|public",
+        "n|tbl|public.departments",
+        "n|sch|public",
+        "n|col|public.subjects.department_id",
+        "n|col|public.departments.id",
+        "e|uniqueness|public.departments.id"
+      ]
+    }
+  ],
+  "deltas": [
+    {
+      "op": "create",
+      "row": {
+        "schema": "public",
+        "table": "subjects",
+        "name": "subjects_department_id_departments_id_fkey",
+        "nameExplicit": false,
+        "columns": [
+          "department_id"
+        ],
+        "schemaTo": "public",
+        "tableTo": "departments",
+        "columnsTo": [
+          "id"
+        ],
+        "onUpdate": "NO ACTION",
+        "onDelete": "RESTRICT",
+        "entityType": "fks"
+      }
+    },
+    {
+      "op": "drop",
+      "key": "fks\u0000[\"public\",\"subjects\",\"subjects_id_departments_id_fkey\"]"
+    },
+    {
+      "op": "alter",
+      "key": "columns\u0000[\"public\",\"subjects\",\"department_id\"]",
+      "set": {
+        "identity": null
+      }
+    },
+    {
+      "op": "alter",
+      "key": "columns\u0000[\"public\",\"subjects\",\"id\"]",
+      "set": {
+        "identity": {
+          "type": "always",
+          "name": "subjects_id_seq",
+          "increment": "1",
+          "startWith": "1",
+          "minValue": "1",
+          "maxValue": "2147483647",
+          "cache": 1,
+          "cycle": false
+        }
+      }
+    },
+    {
+      "op": "alter",
+      "key": "pks\u0000[\"public\",\"subjects\",\"subjects_pkey\"]",
+      "set": {
+        "columns": [
+          "id"
+        ]
+      }
+    }
+  ]
+}
