@@ -15,8 +15,8 @@ export const departments = pgTable('departments',{
 });
 
 export const subjects = pgTable('subjects',{
-    id: integer('department_id').primaryKey().generatedAlwaysAsIdentity(),
-    departmentId: integer('id').notNull().references(() =>
+    id: integer('id').primaryKey().generatedAlwaysAsIdentity(),
+    departmentId: integer('department_id').notNull().references(() =>
         departments.id,{onDelete : 'restrict'}),
     name :varchar('name' , {length : 255}).notNull(),
     code : varchar('code' , {length : 50}).notNull().unique(),
